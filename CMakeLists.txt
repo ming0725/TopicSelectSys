@@ -64,7 +64,7 @@ file(GLOB_RECURSE UI_FILES "${UI_PATH}/*.ui")
 
 
 set(PROJECT_SOURCES
-    topic_win32.rc # 设置生成exe文件图标的文件
+   # topic_win32.rc # 设置生成exe文件图标的文件
     ${IMAGE_FILES}
     ${INCLUDE_FILES}
     ${SOURCES_FILES}
