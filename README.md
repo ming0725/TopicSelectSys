@@ -7,6 +7,14 @@ Qt 6.5.1
 MySQL 8.0.26
 
 ## 效果展示
+### 登录界面
+![](https://github.com/ming0725/TopicSelectSys/blob/main/doc/images/login.png)
+### 客户端-学生端
+![](https://github.com/ming0725/TopicSelectSys/blob/main/doc/images/stu_info.png)
+### 学生选题
+![](https://github.com/ming0725/TopicSelectSys/blob/main/doc/images/stu_select.png)
+### 搜素功能
+![](https://github.com/ming0725/TopicSelectSys/blob/main/doc/images/search.png)
 
 ## 编译运行
 由于每个人MySQL用户名和密码都不一样
