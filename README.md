@@ -105,27 +105,30 @@ set(MYSQL_PATH "${CMAKE_CURRENT_SOURCE_DIR}/mysql")
 
 
 
-建议找到自己的MySQL安装目录，如果安装的时候没改路径，默认就是"C:\Program Files\MySQL\MySQL Server 8.0"。
+#### 如果不想修改CMake中的MySQL配置，优先推荐：
+
+```cmake
+# 这是原始的CMake
+# ${CMAKE_CURRENT_SOURCE_DIR} 为CMakeLists.txt所在的项目文件夹
+set(MYSQL_PATH "${CMAKE_CURRENT_SOURCE_DIR}/mysql")
+```
+先找到自己的MySQL安装目录，如果安装的时候没改路径，默认就是"C:\Program Files\MySQL\MySQL Server 8.0"。
 
 我这里改成了D盘，进入这个文件夹找到include和lib文件夹。
 
-如果你的路径都没空格，可以直接将路径设为MYSQL_PATH的值。
+将整个include和lib文件夹（lib文件夹实际用上的只有libmysql.lib，嫌占空间可以删了其它的）拷贝一份
 
-如果MySQL安装的路径有空格，那么在没空格的路径创建一个mysql文件夹（最好是这个项目文件夹），将include文件夹拷贝到这个文件夹下。
+在项目文件夹中创建一个mysql文件夹，把include和lib放入这里，MySQL依赖项就配置好了。
 
-再创建一个lib文件夹，将lib文件夹中的libmysql.lib放到该文件夹下。
+#### 如果你不想拷贝或者已经在其它地方配置好
 
-如果你是在项目文件夹下创建的（与CMakeLists.txt同目录），那么就设置好了。
+直接将MYSQL_PATH设置为你配置好的文件夹或者MySQL安装路径（一定是include和lib上一级）
 
-也可以在其它地方创建，保证路径没有空格或者中文名，再修改CMakeLists.txt.中这一行：
-
-```cmake
-set(MYSQL_PATH "${CMAKE_CURRENT_SOURCE_DIR}/mysql")
-```
-${CMAKE_CURRENT_SOURCE_DIR}是项目文件夹，如果你是放在D:/mysql下就改为这样：
+例如，你是放在D:/mysql下就改为这样：
 ```cmake
 set(MYSQL_PATH "D:/mysql")
 ```
+
 
 如果编译时会误报病毒，在CMakeLists.txt中修改这行：
 ```cmake
