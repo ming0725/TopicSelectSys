@@ -12,7 +12,6 @@
 1)学生可以在选题功能模块中浏览到自己心仪的题目并且选择该题目，之后等待出题老师录取。每个学生只能选择一条题目。
 2)在老师没有录取之前学生能退掉自己已经选择的题目并且重新选择。
 3)学生能修改自己注册时的个人信息，方便信息更新准确。
-
 ##### 教师功能：
 1)教师可以查询到已经选择了自己建立的题目的学生，并且有权利根据学生具体情况决定是否录取或是退选。
 2)教师可以建立新题目供学生选择。
@@ -26,6 +25,7 @@
 
 ## 运行环境
 Qt 6
+
 MySQL 8.0
 
 
@@ -44,9 +44,13 @@ MySQL 8.0
 
 ## 打开项目
 1.确保已经安装了Qt和MySQL
+
 2.直接下载压缩包解压或使用Git克隆
+
 3.使用Qt Creator或CLion打开（CLion需要配置Qt的编译器）
+
 QtCreator-打开项目-选择文件夹-CMakeList.txt
+
 CLion-Open-选择文件夹
 
 
@@ -74,11 +78,16 @@ set(MYSQL_PATH "${CMAKE_CURRENT_SOURCE_DIR}/mysql")
 ```
 
 配置MySQL环境的时候路径带空格会导致编译不成功。
+
 这两种方式我都试了一遍，还是会有路径错误。
+
 "D:/Program Files/MySQL/MySQL Server 8.0"
+
 "D:\\Program\ Files\\MySQL\\MySQL\ Server\ 8.0"
 
+
 建议找到自己的MySQL安装目录，如果安装的时候没改就是在"C:\Program Files\MySQL\MySQL Server 8.0"。
+
 我这里改成了D盘，进入这个文件夹找到include和lib文件夹。
 
 如果你的路径都没空格，可以直接将路径设为MYSQL_PATH的值。
@@ -86,7 +95,9 @@ set(MYSQL_PATH "${CMAKE_CURRENT_SOURCE_DIR}/mysql")
 如果MySQL安装的路径有空格，那么在没空格的路径创建一个mysql文件夹（最好是这个项目文件夹），将include文件夹拷贝到这个文件夹下。
 
 再创建一个lib文件夹，将lib文件夹中的libmysql.lib放到该文件夹下。
+
 如果你是在项目文件夹下创建的（与CMakeLists.txt同目录），那么就设置好了。
+
 也可以在其它地方创建，保证路径没有空格或者中文名，再修改CMakeLists.txt.中这一行：
 
 ```cmake
@@ -117,6 +128,7 @@ set(PROJECT_SOURCES
 mysql -u 用户名 -p
 ```
 然后输入密码
+
 创建一个database，名字为topic（其它名字也可以，需要修改CMake的DATABASE_VALUE）
 
 ```mysql
@@ -129,9 +141,13 @@ mysql> source topic.sql
 ## 数据库表的结构说明
 ### 关系模式：
 学生(学号,姓名,年龄,性别,邮箱,联系方式,系别,专业,密码)
+
 教师(教师号,姓名,年龄,性别,邮箱,联系方式,系别,职称,密码)
+
 管理员(管理员号,姓名,联系方式,密码)
+
 题目(题目号,教师号,标题,描述,要求,最多选题人数)
+
 选题(学号,题目号,审核状态)
 
 ### 视图
