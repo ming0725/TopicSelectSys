@@ -145,7 +145,7 @@ set(PROJECT_SOURCES
 
 
 ## 创建数据库
-打开命令行界面，登录到MySQL客户端
+在当前文件夹打开命令行界面，登录到MySQL客户端
 ```powershell
 mysql -u 用户名 -p
 ```
@@ -153,7 +153,9 @@ mysql -u 用户名 -p
 
 创建一个database，名字为topic（其它名字也可以，需要修改CMake的DATABASE_VALUE）
 
-```mysql
+执行以下三条命令：
+
+```
 mysql> create database topic;
 mysql> use topic;
 mysql> source topic.sql
